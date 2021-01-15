@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const CartWrapper = styled.div`
+  border: 1px solid black;
+`;
 
 const Cart = () => (
-  <div className="App">
+  <CartWrapper className="App">
     test
-  </div>
+  </CartWrapper>
 );
 
 export default Cart;

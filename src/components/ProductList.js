@@ -2,10 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import Product from './ProductItem';
+
+const ProductListWrapper = styled.div`
+  border: 1px solid black;
+`;
+
 const ProductList = ({ products }) => {
-  console.log('xxx', products);
+  const displayList = products.products.map((product) => (<Product key={product.productId} product={product} />));
+
   return (
-    <div>ProductList</div>
+    <ProductListWrapper>
+      {displayList}
+    </ProductListWrapper>
   );
 };
 
