@@ -6,6 +6,15 @@ import Product from './ProductItem';
 
 const ProductListWrapper = styled.div`
   border: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: 768px) {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-right: -10px; 
+  }
 `;
 
 const ProductList = ({ products }) => {
