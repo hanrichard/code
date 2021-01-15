@@ -9,11 +9,13 @@ import thunk from 'redux-thunk';
 
 import App from './App';
 import productsRudecer from './store/reducers/productsRudecer';
+import cartRudecer from './store/reducers/cartReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   products: productsRudecer,
+  cart: cartRudecer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(
