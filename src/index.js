@@ -7,6 +7,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
+import './index.css';
 import App from './App';
 import productsRudecer from './store/reducers/productsRudecer';
 import cartRudecer from './store/reducers/cartReducer';
