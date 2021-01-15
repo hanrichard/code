@@ -5,20 +5,17 @@ import PropTypes from 'prop-types';
 import ProductList from '../components/ProductList';
 
 const HomeWrapper = styled.div`
+  border: 1px solid black
 `;
 
-const Home = ({ products }) => {
-  console.log('xxxxx', products);
-
-  return (
-    <HomeWrapper>
-      <ProductList products={products} />
-    </HomeWrapper>
-  );
-};
+const Home = ({ products }) => (
+  <HomeWrapper>
+    <ProductList products={products} />
+  </HomeWrapper>
+);
 
 const mapStateToProps = (state) => ({
-  cart: state.cart,
+  products: state.products,
 });
 
 Home.propTypes = {

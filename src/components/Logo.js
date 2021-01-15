@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import woolworthLogo from '../assets/icon-header-logo.png';
 
 const LogoImg = styled.img`
-  height: 50px;
+  height: auto;
   width: 230px;
 `;
 
