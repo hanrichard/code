@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
 
 import Header from './containers/Header';
 import Cart from './containers/Cart';
@@ -9,10 +10,12 @@ const App = () => (
   <Router>
     <div className="container">
       <Header />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/cart" exact component={Cart} />
-      </Switch>
+      <Container>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/cart" exact component={Cart} />
+        </Switch>
+      </Container>
     </div>
   </Router>
 );
