@@ -8,6 +8,7 @@ const ProductItemWrapper = styled.div`
 
   @media (min-width: 768px) {
     width: 33%;
+    min-height: 300px;
   }
 
   @media (min-width: 1024px) {
@@ -18,18 +19,18 @@ const ProductItemWrapper = styled.div`
 const ProductItemInner = styled.div`
   border: 1px solid black;
   padding: 10px;
+  height: 100%;
 `;
 
-const ProductItemImage = styled.div`
+const ProductItemImage = styled.img`
   border: 1px solid black;
+  width: 100%;
 `;
 
 const ProductItem = ({ product }) => (
   <ProductItemWrapper>
     <ProductItemInner>
-      <ProductItemImage>
-        this is image placeholder
-      </ProductItemImage>
+      <ProductItemImage src="https://via.placeholder.com/300x100" alt="img placeholder" />
       <div>
         {product.name}
       </div>
