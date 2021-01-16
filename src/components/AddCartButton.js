@@ -42,7 +42,9 @@ const CustomAddButton = styled(Button)`
   }
 `;
 
-const AddCartButton = ({ product, onAddToCart, cart }) => {
+const AddCartButton = ({
+  product, onAddToCart, cart, onDecreaseQuantity, onIncreaseQuantity, onDeleteCart,
+}) => {
   console.log(cart);
   const stockOnHandNum = product.stockOnHand;
   const [number, setNumber] = useState(0);
@@ -68,11 +70,17 @@ const AddCartButton = ({ product, onAddToCart, cart }) => {
   const handleMinusClick = () => {
     const calcNum = number - 1 < 0 ? 0 : number - 1;
     setNumber(calcNum);
+    onDecreaseQuantity(product);
+
+    if (calcNum === 0) {
+      onDeleteCart(product);
+    }
   };
 
   const handlePlusClick = () => {
     const calcNum = number + 1 > stockOnHandNum ? stockOnHandNum : number + 1;
     setNumber(calcNum);
+    onIncreaseQuantity(product);
   };
 
   const handleAdd = () => {
@@ -86,7 +94,7 @@ const AddCartButton = ({ product, onAddToCart, cart }) => {
         <>
           <CustomButton
             disabled={buttonMinusDisabled}
-            onClick={handleMinusClick}
+            onClick={() => handleMinusClick(product)}
             variant="contained"
             startIcon={<RemoveIcon />} />
           <AddCartQuantity>
@@ -97,7 +105,7 @@ const AddCartButton = ({ product, onAddToCart, cart }) => {
           </AddCartQuantity>
           <CustomButton
             disabled={buttonPlusDisabled}
-            onClick={handlePlusClick}
+            onClick={() => handlePlusClick(product)}
             variant="contained"
             startIcon={<AddIcon />} />
         </>
@@ -112,12 +120,18 @@ AddCartButton.propTypes = {
   product: PropTypes.object,
   cart: PropTypes.object,
   onAddToCart: PropTypes.func,
+  onDeleteCart: PropTypes.func,
+  onDecreaseQuantity: PropTypes.func,
+  onIncreaseQuantity: PropTypes.func,
 };
 
 AddCartButton.defaultProps = {
   product: {},
   cart: {},
   onAddToCart: (() => {}),
+  onDeleteCart: (() => {}),
+  onDecreaseQuantity: (() => {}),
+  onIncreaseQuantity: (() => {}),
 };
 
 const mapStateToProps = (state) => ({
@@ -126,6 +140,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onAddToCart: (item) => dispatch(actions.addToCart(item)),
+  onDeleteCart: (item) => dispatch(actions.deleteCart(item)),
+  onDecreaseQuantity: (item) => dispatch(actions.decreaseQuantity(item)),
+  onIncreaseQuantity: (item) => dispatch(actions.increaseQuantity(item)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCartButton);

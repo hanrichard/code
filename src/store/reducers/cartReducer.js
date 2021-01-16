@@ -10,33 +10,33 @@ const initialState = {
 const cartRudecer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_CART:
-      // eslint-disable-next-line no-case-declarations
-      const cart = {
-        id: action.payload.productId,
-        quantity: 1,
-        name: action.payload.name,
-        price: action.payload.audPrice,
-      };
-      state.cart.push(cart);
+      action.payload.quantity = 1;
+      state.cart.push(action.payload);
 
       return {
         ...state,
+      };
+    case actionTypes.EMPTY_CART:
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.productId !== action.payload.productId),
       };
     case actionTypes.INCREASE_QUANTITY:
-      state.Carts[action.payload].quantity++;
-
       return {
         ...state,
+        cart: state.cart.map((item) => (item.productId === action.payload.productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item)),
       };
     case actionTypes.DECREASE_QUANTITY:
-      // eslint-disable-next-line no-case-declarations
-      const { quantity } = state.Carts[action.payload];
-      if (quantity > 1) {
-        state.Carts[action.payload].quantity--;
-      }
-
       return {
         ...state,
+        cart: state.cart.map((item) => (item.productId === action.payload.productId
+          ? {
+            ...item,
+            quantity: item.quantity !== 1 ? item.quantity - 1 : 1,
+          }
+          : item)),
       };
     default:
       return state;
