@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Product from './ProductItem';
 
 const ProductListWrapper = styled.div`
-  border: 1px solid black;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -18,6 +17,7 @@ const ProductListWrapper = styled.div`
 `;
 
 const ProductList = ({ products }) => {
+  console.log(products);
   const displayList = products.products.map((product) => (<Product key={product.productId} product={product} />));
 
   return (

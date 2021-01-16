@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ProductList from '../components/ProductList';
 
 const HomeWrapper = styled.div`
-  border: 1px solid black
+  padding-top: 50px;
 `;
 
 const Home = ({ products }) => (

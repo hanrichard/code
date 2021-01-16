@@ -5,6 +5,7 @@ import AddCartButton from './AddCartButton';
 
 const ProductItemWrapper = styled.div`
   width: 100%;
+  margin-bottom: 20px;
 
   @media (min-width: 768px) {
     width: 33%;
@@ -18,32 +19,50 @@ const ProductItemWrapper = styled.div`
 
 const ProductItemInner = styled.div`
   border: 1px solid black;
-  padding: 10px;
+  padding: 0 10px 10px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const ProductItemImage = styled.img`
-  border: 1px solid black;
+  margin-bottom: 10px;
   width: 100%;
+`;
+
+const ProductItemGroup = styled.div`
+  margin-bottom: 10px;
+`;
+
+const ProductItemName = styled.div`
+  margin-bottom: 10px;
+`;
+
+const ProductItemPrice = styled.div`
+  margin-bottom: 10px;
+`;
+
+const ProductItemDescription = styled.div`
+  margin-bottom: 10px;
 `;
 
 const ProductItem = ({ product }) => (
   <ProductItemWrapper>
     <ProductItemInner>
-      <ProductItemImage src="https://via.placeholder.com/300x100" alt="img placeholder" />
-      <div>
-        {product.name}
-      </div>
-      <div>
-        {product.audPrice}
-      </div>
-      <div>
-        {product.description}
-      </div>
-      <div>
-        <AddCartButton />
-      </div>
-      <div />
+      <ProductItemGroup>
+        <ProductItemImage src="https://via.placeholder.com/300x100" alt="img placeholder" />
+        <ProductItemName>
+          {product.name}
+        </ProductItemName>
+        <ProductItemPrice>
+          {product.stockOnHand !== 0 ? product.audPrice : 'Out of stock'}
+        </ProductItemPrice>
+        <ProductItemDescription>
+          {product.description}
+        </ProductItemDescription>
+      </ProductItemGroup>
+      <AddCartButton product={product} />
     </ProductItemInner>
   </ProductItemWrapper>
 );
