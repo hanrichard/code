@@ -17,7 +17,6 @@ const ProductListWrapper = styled.div`
 `;
 
 const ProductList = ({ products }) => {
-  console.log(products);
   const displayList = products.products.map((product) => (<Product key={product.productId} product={product} />));
 
   return (

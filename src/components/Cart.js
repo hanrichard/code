@@ -1,17 +1,51 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const CartWrapper = styled.div`
-  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 5px 15px;
 `;
 
-const Cart = () => (
-  <CartWrapper>
-    <Link to="/cart">
-      cart
-    </Link>
-  </CartWrapper>
-);
+const CartInfo = styled.div`
+  padding: 0 20px;
+`;
+
+const CartLink = styled(Link)`
+  color: #fff;
+  font-size: 14px;
+  border-radius: 20px;
+  background-color: #125430;
+  padding: 10px 15px;
+`;
+
+const Cart = ({ cart }) => {
+  console.log(cart);
+  return (
+    <CartWrapper>
+      <ShoppingCartIcon />
+      <CartInfo>
+        <div>Your cart</div>
+        <div>value</div>
+      </CartInfo>
+      <CartLink to="/cart">
+        View cart
+      </CartLink>
+    </CartWrapper>
+  );
+};
+
+Cart.propTypes = {
+  cart: PropTypes.object,
+};
+
+Cart.defaultProps = {
+  cart: {},
+};
 
 export default Cart;

@@ -6,8 +6,6 @@ import * as actions from '../store/actions/index';
 import ProductList from '../components/ProductList';
 
 const HomeWrapper = styled.div`
-  padding: 50px 20px;
-  background-color: #eee;
 `;
 
 const Home = ({ products, onInitProducts }) => {

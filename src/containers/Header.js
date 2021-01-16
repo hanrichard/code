@@ -14,16 +14,12 @@ const HeaderWrapper = styled.div`
   align-items: center;
 `;
 
-const Header = ({ cart }) => {
-  console.log('xxxx', cart);
-
-  return (
-    <HeaderWrapper>
-      <Logo />
-      <Cart cart={cart} />
-    </HeaderWrapper>
-  );
-};
+const Header = ({ cart }) => (
+  <HeaderWrapper>
+    <Logo />
+    <Cart cart={cart} />
+  </HeaderWrapper>
+);
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
