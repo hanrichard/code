@@ -8,6 +8,12 @@ const CartTableWrapper = styled.div`
   padding: 10px;
 `;
 
+const CartTotal = styled.div`
+  width: 100%;
+  padding: 10px;
+  text-align: right;
+`;
+
 const CartTable = ({ cart }) => {
   const displayCart = cart.cart.length > 0 && cart.cart.map((product) => <CartTableItem key={product.productId} product={product} />);
   const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
@@ -17,9 +23,9 @@ const CartTable = ({ cart }) => {
       <div>
         {displayCart}
       </div>
-      <div>
-        {calcValue}
-      </div>
+      <CartTotal>
+        {`Total: $${calcValue}`}
+      </CartTotal>
     </CartTableWrapper>
   );
 };

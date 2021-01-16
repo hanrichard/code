@@ -10,6 +10,7 @@ import * as actions from '../store/actions/index';
 const AddCartButtonWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
 `;
 
 const AddCartQuantity = styled.div`
@@ -46,8 +47,11 @@ const AddCartButton = ({
   product, onAddToCart, cart, onDecreaseQuantity, onIncreaseQuantity, onDeleteCart,
 }) => {
   console.log(cart);
+  const defaultNumber = cart.cart.find(((item) => item.productId === product.productId))?.quantity || 0;
+
+  console.log(defaultNumber);
   const stockOnHandNum = product.stockOnHand;
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(defaultNumber);
   const [buttonMinusDisabled, setButtonMinusDisabled] = useState(false);
   const [buttonPlusDisabled, setButtonPlusDisabled] = useState(false);
   const [buttonAddDisabled, setButtonAddDisabled] = useState(false);
@@ -99,9 +103,6 @@ const AddCartButton = ({
             startIcon={<RemoveIcon />} />
           <AddCartQuantity>
             {number}
-            {' '}
-            - total
-            {stockOnHandNum}
           </AddCartQuantity>
           <CustomButton
             disabled={buttonPlusDisabled}

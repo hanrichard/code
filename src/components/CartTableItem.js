@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// import AddCartButton from './AddCartButton';
+import AddCartButton from './AddCartButton';
 
 const CartTableItemWrapper = styled.div`
   display: flex;
   padding: 10px;
   border-bottom: 1px solid #126c34;
+  align-items: center;
 `;
 
 const CartTableItemName = styled.div`
@@ -22,18 +23,24 @@ const CartTableItemQuantity = styled.div`
   width: 25%;
 `;
 
+const CartTableItemButtonGroup = styled.div`
+  width: 25%;
+`;
+
 const CartTableItem = ({ product }) => (
   <CartTableItemWrapper>
     <CartTableItemName>
       {product.name}
     </CartTableItemName>
     <CartTableItemPrice>
-      {product.audPrice}
+      {`$${product.audPrice}`}
     </CartTableItemPrice>
     <CartTableItemQuantity>
       {product.quantity}
     </CartTableItemQuantity>
-    {/* <AddCartButton product={product} /> */}
+    <CartTableItemButtonGroup>
+      <AddCartButton product={product} />
+    </CartTableItemButtonGroup>
   </CartTableItemWrapper>
 );
 
