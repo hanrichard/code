@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import CartTable from '../components/CartTable';
 
 const CartWrapper = styled.div`
-  border: 1px solid black;
   background-color: #fff;
 `;
 

@@ -5,6 +5,7 @@ import CartTableItem from './CartTableItem';
 
 const CartTableWrapper = styled.div`
   width: 100%;
+  padding: 10px;
 `;
 
 const CartTable = ({ cart }) => {
