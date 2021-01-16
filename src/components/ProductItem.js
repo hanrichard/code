@@ -64,7 +64,7 @@ const ProductItem = ({ product }) => {
     <ProductItemWrapper>
       <ProductItemInner>
         <ProductItemGroup>
-          <ProductItemImage src="https://via.placeholder.com/300x100" alt="img placeholder" />
+          <ProductItemImage src="https://via.placeholder.com/300x100?text=Image+Placeholder" alt="img placeholder" />
           <ProductItemName>
             {product.name}
           </ProductItemName>
