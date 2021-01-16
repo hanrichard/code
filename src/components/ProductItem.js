@@ -6,6 +6,7 @@ import AddCartButton from './AddCartButton';
 const ProductItemWrapper = styled.div`
   width: 100%;
   margin-bottom: 20px;
+  padding: 0 10px 10px;
 
   @media (min-width: 768px) {
     width: 33%;
@@ -18,9 +19,8 @@ const ProductItemWrapper = styled.div`
 `;
 
 const ProductItemInner = styled.div`
-  border: 1px solid black;
-  padding: 0 10px 10px;
   height: 100%;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,6 +33,7 @@ const ProductItemImage = styled.img`
 
 const ProductItemGroup = styled.div`
   margin-bottom: 10px;
+  padding: 10px;
 `;
 
 const ProductItemName = styled.div`
@@ -47,25 +48,40 @@ const ProductItemDescription = styled.div`
   margin-bottom: 10px;
 `;
 
-const ProductItem = ({ product }) => (
-  <ProductItemWrapper>
-    <ProductItemInner>
-      <ProductItemGroup>
-        <ProductItemImage src="https://via.placeholder.com/300x100" alt="img placeholder" />
-        <ProductItemName>
-          {product.name}
-        </ProductItemName>
-        <ProductItemPrice>
-          {product.stockOnHand !== 0 ? product.audPrice : 'Out of stock'}
-        </ProductItemPrice>
-        <ProductItemDescription>
-          {product.description}
-        </ProductItemDescription>
-      </ProductItemGroup>
-      <AddCartButton product={product} />
-    </ProductItemInner>
-  </ProductItemWrapper>
-);
+const ProductItemCartButtonGroup = styled.div`
+  padding: 10px;
+`;
+
+const ProductItem = ({ product }) => {
+  const productPrice = () => (
+    <span>
+      <span>$</span>
+      {product.audPrice}
+    </span>
+  );
+
+  return (
+    <ProductItemWrapper>
+      <ProductItemInner>
+        <ProductItemGroup>
+          <ProductItemImage src="https://via.placeholder.com/300x100" alt="img placeholder" />
+          <ProductItemName>
+            {product.name}
+          </ProductItemName>
+          <ProductItemPrice>
+            {product.stockOnHand !== 0 ? productPrice() : 'Out of stock'}
+          </ProductItemPrice>
+          <ProductItemDescription>
+            {product.description}
+          </ProductItemDescription>
+        </ProductItemGroup>
+        <ProductItemCartButtonGroup>
+          <AddCartButton product={product} />
+        </ProductItemCartButtonGroup>
+      </ProductItemInner>
+    </ProductItemWrapper>
+  );
+};
 
 ProductItem.propTypes = {
   product: PropTypes.object,

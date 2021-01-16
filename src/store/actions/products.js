@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { axiosApi } from '../../axios-api';
+import { axiosApi, token } from '../../axios-api';
 
 export const setIngredients = (payload) => ({
   type: actionTypes.FETCH_PRODUCTS,
@@ -7,7 +7,7 @@ export const setIngredients = (payload) => ({
 });
 
 export const initProducts = () => (dispatch) => {
-  axiosApi.get('/api/v1/resources/products?token=c512c0f1b2cc62b45be1ff9f2e9cb4332bd9')
+  axiosApi.get(`/api/v1/resources/products?token=${token}`)
     .then((response) => {
       dispatch(setIngredients(response.data));
     })
