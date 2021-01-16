@@ -4,7 +4,6 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   cart: [],
-  numberCart: 0,
 };
 
 const cartRudecer = (state = initialState, action) => {

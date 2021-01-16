@@ -25,13 +25,17 @@ const CartLink = styled(Link)`
 `;
 
 const Cart = ({ cart }) => {
-  console.log(cart);
+  const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
+  const amout = cart.cart.length > 0 ? `$${calcValue.toFixed(2)}` : 0;
+
   return (
     <CartWrapper>
       <ShoppingCartIcon />
       <CartInfo>
         <div>Your cart</div>
-        <div>value</div>
+        <div>
+          {amout}
+        </div>
       </CartInfo>
       <CartLink to="/cart">
         View cart
