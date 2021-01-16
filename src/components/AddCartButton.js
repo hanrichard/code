@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -27,16 +27,50 @@ const CustomButton = styled(Button)`
 
 const AddCartButton = ({ product }) => {
   const stockOnHandNum = product.stockOnHand;
+  const [number, setNumber] = useState(0);
+  const [buttonMinusDisabled, setButtonMinusDisabled] = useState(false);
+  const [buttonPlusDisabled, setButtonPlusDisabled] = useState(false);
+
+  useEffect(() => {
+    if (stockOnHandNum === 0) {
+      setButtonMinusDisabled(true);
+      setButtonPlusDisabled(true);
+    } else if (number + 1 > stockOnHandNum) {
+      setButtonPlusDisabled(true);
+    } else if (number - 1 < 0) {
+      setButtonMinusDisabled(true);
+    } else {
+      setButtonMinusDisabled(false);
+      setButtonPlusDisabled(false);
+    }
+  }, [number, stockOnHandNum]);
+
+  const handleMinusClick = () => {
+    const calcNum = number - 1 < 0 ? 0 : number - 1;
+    setNumber(calcNum);
+  };
+
+  const handlePlusClick = () => {
+    const calcNum = number + 1 > stockOnHandNum ? stockOnHandNum : number + 1;
+    setNumber(calcNum);
+  };
 
   return (
     <AddCartButtonWrapper>
       <CustomButton
+        disabled={buttonMinusDisabled}
+        onClick={handleMinusClick}
         variant="contained"
         startIcon={<RemoveIcon />} />
       <AddCartQuantity>
+        {number}
+        {' '}
+        - total
         {stockOnHandNum}
       </AddCartQuantity>
       <CustomButton
+        disabled={buttonPlusDisabled}
+        onClick={handlePlusClick}
         variant="contained"
         startIcon={<AddIcon />} />
     </AddCartButtonWrapper>
