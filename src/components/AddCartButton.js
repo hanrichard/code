@@ -6,24 +6,37 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 
 const AddCartButtonWrapper = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
 `;
 
 const AddCartQuantity = styled.div`
-  margin: 0 10px;
+  margin: 0 auto;
+`;
+
+const CustomButton = styled(Button)`
+  && {
+    background-color: #125430;
+    color: #fff;
+
+    span {
+      margin: 0;
+    }
+  }
 `;
 
 const AddCartButton = ({ product }) => {
-  console.log('product', product.stockOnHand);
+  const stockOnHandNum = product.stockOnHand;
 
   return (
     <AddCartButtonWrapper>
-      <Button
+      <CustomButton
         variant="contained"
         startIcon={<RemoveIcon />} />
-      <AddCartQuantity>total</AddCartQuantity>
-      <Button
+      <AddCartQuantity>
+        {stockOnHandNum}
+      </AddCartQuantity>
+      <CustomButton
         variant="contained"
         startIcon={<AddIcon />} />
     </AddCartButtonWrapper>
