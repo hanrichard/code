@@ -110,7 +110,11 @@ const AddCartButton = ({
             startIcon={<AddIcon />} />
         </>
       )
-        : <CustomAddButton onClick={() => handleAdd(product)} disabled={buttonAddDisabled}>Add</CustomAddButton>}
+        : (
+          <CustomAddButton onClick={() => handleAdd(product)} disabled={buttonAddDisabled}>
+            {buttonAddDisabled ? 'Out of stock' : 'Add'}
+          </CustomAddButton>
+        )}
 
     </AddCartButtonWrapper>
   );
