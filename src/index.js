@@ -11,12 +11,14 @@ import './index.css';
 import App from './App';
 import productsRudecer from './store/reducers/productsRudecer';
 import cartRudecer from './store/reducers/cartReducer';
+import apiReducer from './store/reducers/apiReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   products: productsRudecer,
   cart: cartRudecer,
+  apiStatus: apiReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(

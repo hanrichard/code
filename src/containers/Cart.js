@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import * as actions from '../store/actions/index';
 
 import CheckoutMessage from '../components/CheckoutMessage';
 import CartTable from '../components/CartTable';
 
 const Cart = ({
-  cart, onDeleteCart, onCheckout, onCheckoutReset,
+  cart, onDeleteCart, onCheckout, onCheckoutReset, apiStatus,
 }) => (
   <>
+    {apiStatus.error && (
+    <Alert severity="error">
+      <AlertTitle>Error</AlertTitle>
+      There is something wrong with your API token!
+    </Alert>
+    )}
     <CartTable
       cart={cart}
       onCheckoutReset={() => onCheckoutReset()}
@@ -19,6 +26,7 @@ const Cart = ({
   </>
 );
 Cart.propTypes = {
+  apiStatus: PropTypes.object,
   cart: PropTypes.object,
   onDeleteCart: PropTypes.func,
   onCheckout: PropTypes.func,
@@ -27,6 +35,7 @@ Cart.propTypes = {
 
 Cart.defaultProps = {
   cart: {},
+  apiStatus: {},
   onDeleteCart: (() => {}),
   onCheckout: (() => {}),
   onCheckoutReset: (() => {}),

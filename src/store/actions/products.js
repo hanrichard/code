@@ -6,13 +6,18 @@ export const setProducts = (payload) => ({
   payload,
 });
 
+export const apiError = () => ({
+  type: actionTypes.TOKEN_ERROR,
+});
+
 export const initProducts = () => (dispatch) => {
   axiosApi.get(`/api/v1/resources/products?token=${token}`)
     .then((response) => {
       dispatch(setProducts(response.data));
     })
     .catch((error) => {
-      console.log(error);
-      // dispatch(fetchIngredientsFailed());
+      if (error) {
+        dispatch(apiError());
+      }
     });
 };

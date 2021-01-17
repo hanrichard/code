@@ -34,9 +34,7 @@ const Cart = ({ cart }) => {
       <ShoppingCartIcon />
       <CartInfo>
         <div>Your cart</div>
-        <div>
-          {amout}
-        </div>
+        {amout}
       </CartInfo>
       <CartLink to="/cart">
         View cart

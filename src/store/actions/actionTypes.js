@@ -11,3 +11,5 @@ export const CHECKOUT = 'CHECKOUT';
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
 export const CHECKOUT_FAIL = 'CHECKOUT_FAIL';
 export const CHECKOUT_RESET = 'CHECKOUT_RESET';
+
+export const TOKEN_ERROR = 'TOKEN_ERROR';

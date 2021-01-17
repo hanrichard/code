@@ -42,8 +42,7 @@ export const checkout = (data) => (dispatch) => {
     })
     .catch((error) => {
       if (error.response) {
-        console.log('error.response', error.response.data.code);
+        dispatch(checkoutFail());
       }
-      dispatch(checkoutFail());
     });
 };
