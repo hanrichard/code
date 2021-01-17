@@ -28,20 +28,28 @@ const CartInfoItem = styled.div`
   width :25%;
 `;
 
+const CartTableItemDelete = styled.div`
+  width: 10%;
+`;
+
+const CartTableItemButtonGroup = styled.div`
+  width: 15%;
+`;
+
 const CartTable = ({ cart, onDeleteCart }) => {
   const displayCart = cart.cart.length > 0 && cart.cart.map((product) => <CartTableItem key={product.productId} product={product} onDeleteCart={onDeleteCart} />);
   const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
 
   return (
     <CartTableWrapper>
-
       {cart.cart.length > 0 ? (
         <>
           <CartInfo>
+            <CartTableItemDelete />
             <CartInfoItem>Name</CartInfoItem>
             <CartInfoItem>Price</CartInfoItem>
             <CartInfoItem>Quantity</CartInfoItem>
-            <CartInfoItem>Update</CartInfoItem>
+            <CartTableItemButtonGroup>Update</CartTableItemButtonGroup>
           </CartInfo>
           {displayCart}
           <CartTotal>

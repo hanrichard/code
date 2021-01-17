@@ -9,7 +9,7 @@ const CheckoutWrapper = styled.div`
 `;
 
 const Checkout = ({ cart }) => {
-  console.log(123);
+  console.log(cart);
   return cart.cart.length > 0 && (
     <CheckoutWrapper>
       Check out
