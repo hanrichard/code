@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from '../store/actions/index';
 import ProductList from '../components/ProductList';
-import ApiErrorMessage from '../components/ApiErrorMessage';
+import AlterMessage from '../components/AlterMessage';
 
 const Home = ({ products, onInitProducts, apiStatus }) => {
   useEffect(() => {
@@ -12,7 +12,7 @@ const Home = ({ products, onInitProducts, apiStatus }) => {
 
   return (
     <>
-      {apiStatus.error && <ApiErrorMessage title="Error" content="There is something wrong with your token" />}
+      {apiStatus.error && <AlterMessage title="Error" content="There is something wrong with your token" />}
       <ProductList products={products} />
     </>
   );

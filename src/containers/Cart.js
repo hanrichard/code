@@ -5,13 +5,13 @@ import * as actions from '../store/actions/index';
 
 import CheckoutMessage from '../components/CheckoutMessage';
 import CartTable from '../components/CartTable';
-import ApiErrorMessage from '../components/ApiErrorMessage';
+import AlterMessage from '../components/AlterMessage';
 
 const Cart = ({
   cart, onDeleteCart, onCheckout, onCheckoutReset, apiStatus,
 }) => (
   <>
-    {apiStatus.error && <ApiErrorMessage title="Error" content="There is something wrong with your token" />}
+    {apiStatus.error && <AlterMessage title="Error" content="There is something wrong with your token" />}
     <CartTable
       cart={cart}
       onCheckoutReset={() => onCheckoutReset()}
