@@ -47,7 +47,7 @@ const CustomAddButton = styled(Button)`
 `;
 
 const AddCartButton = ({
-  product, onAddToCart, cart, onDecreaseQuantity, onIncreaseQuantity, onDeleteCart,
+  product, onAddToCart, cart, onDecreaseQuantity, onIncreaseQuantity, onDeleteCart, onCheckoutReset,
 }) => {
   const defaultNumber = cart.products.find(((item) => item.productId === product.productId))?.quantity || 0;
   const stockOnHandNum = product.stockOnHand;
@@ -75,6 +75,7 @@ const AddCartButton = ({
     const calcNum = number - 1 < 0 ? 0 : number - 1;
     setNumber(calcNum);
     onDecreaseQuantity(product);
+    onCheckoutReset();
 
     if (calcNum === 0) {
       onDeleteCart(product);
@@ -85,6 +86,7 @@ const AddCartButton = ({
     const calcNum = number + 1 > stockOnHandNum ? stockOnHandNum : number + 1;
     setNumber(calcNum);
     onIncreaseQuantity(product);
+    onCheckoutReset();
   };
 
   const handleAdd = () => {
@@ -128,6 +130,7 @@ AddCartButton.propTypes = {
   onDeleteCart: PropTypes.func,
   onDecreaseQuantity: PropTypes.func,
   onIncreaseQuantity: PropTypes.func,
+  onCheckoutReset: PropTypes.func,
 };
 
 AddCartButton.defaultProps = {
@@ -137,6 +140,7 @@ AddCartButton.defaultProps = {
   onDeleteCart: (() => {}),
   onDecreaseQuantity: (() => {}),
   onIncreaseQuantity: (() => {}),
+  onCheckoutReset: (() => {}),
 };
 
 const mapStateToProps = (state) => ({
@@ -148,6 +152,7 @@ const mapDispatchToProps = (dispatch) => ({
   onDeleteCart: (item) => dispatch(actions.deleteCart(item)),
   onDecreaseQuantity: (item) => dispatch(actions.decreaseQuantity(item)),
   onIncreaseQuantity: (item) => dispatch(actions.increaseQuantity(item)),
+  onCheckoutReset: () => dispatch(actions.checkoutReset()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCartButton);

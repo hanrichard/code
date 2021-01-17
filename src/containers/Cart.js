@@ -43,7 +43,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onDeleteCart: (item) => dispatch(actions.deleteCart(item)),
   onCheckout: (item) => dispatch(actions.checkout(item)),
-  onCheckoutReset: (item) => dispatch(actions.checkoutReset(item)),
+  onCheckoutReset: () => dispatch(actions.checkoutReset()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
