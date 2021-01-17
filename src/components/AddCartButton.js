@@ -12,8 +12,9 @@ const AddCartButtonWrapper = styled.div`
   align-items: center;
   width: 100%;
   border: 1px solid #c3c7c9;
-  border-radius: 5px;
+  border-radius: 25px;
   height: 36px;
+  overflow: hidden;
 `;
 
 const AddCartQuantity = styled.div`

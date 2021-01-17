@@ -8,7 +8,7 @@ WooliesX customer can:
 - click on the checkout button, they should get a message confirming or declining their order;
 
 ## What's in the project
-MY-APP provides the front-end view to interactive with data
+MY-APP provides the front-end view to interactive with data, and also this is fully accessiblity supported.
 
 ## Tech stacks
 React, Redux, scss, style-component, es6, material-ui, etc
