@@ -8,8 +8,9 @@ import Cart from './containers/Cart';
 import Home from './containers/Home';
 
 const AppWrapper = styled(Container)`
-  padding: 50px 20px;
+  padding: 20px;
   background-color: #eee;
+  margin-top: 20px;
 `;
 
 const App = () => (

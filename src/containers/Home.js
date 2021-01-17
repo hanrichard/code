@@ -1,23 +1,15 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from '../store/actions/index';
 import ProductList from '../components/ProductList';
-
-const HomeWrapper = styled.div`
-`;
 
 const Home = ({ products, onInitProducts }) => {
   useEffect(() => {
     onInitProducts();
   }, [onInitProducts]);
 
-  return (
-    <HomeWrapper>
-      <ProductList products={products} />
-    </HomeWrapper>
-  );
+  return <ProductList products={products} />;
 };
 
 const mapStateToProps = (state) => ({
