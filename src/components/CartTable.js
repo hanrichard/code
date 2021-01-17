@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CartTableItem from './CartTableItem';
+import { priceFormat } from '../utility/priceFormat';
 
 const CartTableWrapper = styled.div`
   width: 100%;
@@ -53,7 +54,7 @@ const CartTable = ({ cart, onDeleteCart }) => {
           </CartInfo>
           {displayCart}
           <CartTotal>
-            {`Total: $${calcValue.toFixed(2)}`}
+            {`Total: ${priceFormat(calcValue)}`}
           </CartTotal>
         </>
       ) : (

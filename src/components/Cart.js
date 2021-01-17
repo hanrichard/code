@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { priceFormat } from '../utility/priceFormat';
 
 const CartWrapper = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ const CartLink = styled(Link)`
 
 const Cart = ({ cart }) => {
   const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
-  const amout = cart.cart.length > 0 ? `$${calcValue.toFixed(2)}` : 0;
+  const amout = cart.cart.length > 0 ? priceFormat(calcValue) : 0;
 
   return (
     <CartWrapper>
