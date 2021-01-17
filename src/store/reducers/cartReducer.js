@@ -38,6 +38,7 @@ const cartRudecer = (state = initialState, action) => {
           : item)),
       };
     case actionTypes.CHECKOUT_SUCCESS:
+      console.log('payload', action.payload);
       return {
         ...state,
         checkout_status: true,

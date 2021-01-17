@@ -48,7 +48,8 @@ const CartTable = ({ cart, onDeleteCart, onCheckout }) => {
   const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
 
   const handleClick = () => {
-    onCheckout();
+    console.log('xxxx', cart.cart);
+    onCheckout(cart.cart);
     console.log('checkout', cart);
   };
   return (

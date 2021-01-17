@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { axiosApi, token } from '../../axios-api';
+import { axiosApi, token, header } from '../../axios-api';
 
 export const addToCart = (payload) => ({
   type: actionTypes.ADD_CART,
@@ -26,14 +26,16 @@ export const checkoutSuccess = (payload) => ({
   payload,
 });
 
-export const checkout = () => (dispatch) => {
-  axiosApi.post(`/api/v1/resources/checkout?token=${token}`)
+export const checkout = (data) => (dispatch) => {
+  const formatedData = JSON.stringify(data);
+  axiosApi.post(`/api/v1/resources/checkout?token=${token}`, formatedData, header)
     .then((response) => {
-      console.log('xxxx', response);
       dispatch(checkoutSuccess(response.data));
     })
     .catch((error) => {
-      console.log(error);
+      if (error.response) {
+        console.log('error.response', error.response.data.code);
+      }
       // dispatch(fetchIngredientsFailed());
     });
 };
