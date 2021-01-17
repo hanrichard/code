@@ -41,12 +41,14 @@ const cartRudecer = (state = initialState, action) => {
     case actionTypes.CHECKOUT_SUCCESS:
       return {
         ...state,
+        products: [],
         checkout_success: true,
         checkout_error: false,
       };
     case actionTypes.CHECKOUT_FAIL:
       return {
         ...state,
+        products: [],
         checkout_success: false,
         checkout_error: true,
       };

@@ -92,6 +92,7 @@ const AddCartButton = ({
   const handleAdd = () => {
     onAddToCart(product);
     setNumber(1);
+    onCheckoutReset();
   };
 
   return (

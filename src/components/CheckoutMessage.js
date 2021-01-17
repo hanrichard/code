@@ -9,12 +9,13 @@ const CheckoutWrapper = styled.div`
 `;
 
 const CheckoutMessage = ({ cart }) => {
+  console.log(cart);
   const showCheckoutSuccess = cart.checkout_success;
   const showCheckoutError = cart.checkout_error;
-  return cart.products.length > 0 && (
+  return (showCheckoutSuccess || showCheckoutError) && (
     <CheckoutWrapper>
       {showCheckoutError && <AlterMessage severity="error" title="Error" content="Your order has been declined!" /> }
-      {showCheckoutSuccess && <AlterMessage severity="success" title="success" content="Your order has been confirmed!" /> }
+      {showCheckoutSuccess && <AlterMessage severity="success" title="success" content="You have successfully checked out, and your order has been confirmed!" /> }
     </CheckoutWrapper>
   );
 };
