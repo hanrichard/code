@@ -9,3 +9,5 @@ export const EMPTY_CART = 'EMPTY_CART';
 
 export const CHECKOUT = 'CHECKOUT';
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
+export const CHECKOUT_FAIL = 'CHECKOUT_FAIL';
+export const CHECKOUT_RESET = 'CHECKOUT_RESET';

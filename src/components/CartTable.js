@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -43,7 +43,16 @@ const CartCheckoutButton = styled.div`
   margin-top: 50px;
 `;
 
-const CartTable = ({ cart, onDeleteCart, onCheckout }) => {
+const CartTable = ({
+  cart, onDeleteCart, onCheckout, onCheckoutReset,
+}) => {
+  useEffect(() => {
+    if (cart.products.length === 0) {
+      onCheckoutReset();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart.products]);
+
   const displayCart = cart.products.length > 0 && cart.products.map((product) => <CartTableItem key={product.productId} product={product} onDeleteCart={onDeleteCart} />);
   const calcValue = cart.products.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
 
@@ -85,12 +94,14 @@ CartTable.propTypes = {
   cart: PropTypes.object,
   onDeleteCart: PropTypes.func,
   onCheckout: PropTypes.func,
+  onCheckoutReset: PropTypes.func,
 };
 
 CartTable.defaultProps = {
   cart: {},
   onDeleteCart: (() => {}),
   onCheckout: (() => {}),
+  onCheckoutReset: (() => {}),
 };
 
 export default CartTable;

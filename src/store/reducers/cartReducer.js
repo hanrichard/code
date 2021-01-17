@@ -4,7 +4,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   products: [],
-  checkout_status: false,
+  checkout_success: false,
+  checkout_error: false,
 };
 
 const cartRudecer = (state = initialState, action) => {
@@ -40,7 +41,18 @@ const cartRudecer = (state = initialState, action) => {
     case actionTypes.CHECKOUT_SUCCESS:
       return {
         ...state,
-        checkout_status: true,
+        checkout_success: true,
+      };
+    case actionTypes.CHECKOUT_FAIL:
+      return {
+        ...state,
+        checkout_error: true,
+      };
+    case actionTypes.CHECKOUT_RESET:
+      return {
+        ...state,
+        checkout_success: false,
+        checkout_error: false,
       };
     default:
       return state;

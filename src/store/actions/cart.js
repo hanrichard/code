@@ -21,13 +21,21 @@ export const deleteCart = (payload) => ({
   payload,
 });
 
+export const checkoutReset = () => ({
+  type: actionTypes.CHECKOUT_RESET,
+});
+
+export const checkoutFail = () => ({
+  type: actionTypes.CHECKOUT_FAIL,
+});
+
 export const checkoutSuccess = (payload) => ({
   type: actionTypes.CHECKOUT_SUCCESS,
   payload,
 });
 
 export const checkout = (data) => (dispatch) => {
-  const formatedData = JSON.stringify(data);
+  const formatedData = JSON.stringify(data + 12);
   axiosApi.post(`/api/v1/resources/checkout?token=${token}`, formatedData, header)
     .then((response) => {
       dispatch(checkoutSuccess(response.data));
@@ -36,6 +44,6 @@ export const checkout = (data) => (dispatch) => {
       if (error.response) {
         console.log('error.response', error.response.data.code);
       }
-      // dispatch(fetchIngredientsFailed());
+      dispatch(checkoutFail());
     });
 };

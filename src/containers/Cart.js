@@ -10,10 +10,13 @@ import CartTable from '../components/CartTable';
 const CartWrapper = styled.div`
 `;
 
-const Cart = ({ cart, onDeleteCart, onCheckout }) => (
+const Cart = ({
+  cart, onDeleteCart, onCheckout, onCheckoutReset,
+}) => (
   <CartWrapper>
     <CartTable
       cart={cart}
+      onCheckoutReset={() => onCheckoutReset()}
       onDeleteCart={(product) => onDeleteCart(product)}
       onCheckout={(product) => onCheckout(product)} />
     <CheckoutMessage cart={cart} />
@@ -23,12 +26,14 @@ Cart.propTypes = {
   cart: PropTypes.object,
   onDeleteCart: PropTypes.func,
   onCheckout: PropTypes.func,
+  onCheckoutReset: PropTypes.func,
 };
 
 Cart.defaultProps = {
   cart: {},
   onDeleteCart: (() => {}),
   onCheckout: (() => {}),
+  onCheckoutReset: (() => {}),
 };
 
 const mapStateToProps = (state) => ({
@@ -38,6 +43,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onDeleteCart: (item) => dispatch(actions.deleteCart(item)),
   onCheckout: (item) => dispatch(actions.checkout(item)),
+  onCheckoutReset: (item) => dispatch(actions.checkoutReset(item)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
