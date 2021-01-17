@@ -28,8 +28,8 @@ const CartInfoItem = styled.div`
   width :25%;
 `;
 
-const CartTable = ({ cart }) => {
-  const displayCart = cart.cart.length > 0 && cart.cart.map((product) => <CartTableItem key={product.productId} product={product} />);
+const CartTable = ({ cart, onDeleteCart }) => {
+  const displayCart = cart.cart.length > 0 && cart.cart.map((product) => <CartTableItem key={product.productId} product={product} onDeleteCart={onDeleteCart} />);
   const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
 
   return (
@@ -62,10 +62,12 @@ const CartTable = ({ cart }) => {
 
 CartTable.propTypes = {
   cart: PropTypes.object,
+  onDeleteCart: PropTypes.func,
 };
 
 CartTable.defaultProps = {
   cart: {},
+  onDeleteCart: (() => {}),
 };
 
 export default CartTable;
