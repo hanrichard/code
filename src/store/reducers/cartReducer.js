@@ -4,6 +4,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   cart: [],
+  checkout_status: false,
 };
 
 const cartRudecer = (state = initialState, action) => {
@@ -11,7 +12,6 @@ const cartRudecer = (state = initialState, action) => {
     case actionTypes.ADD_CART:
       action.payload.quantity = 1;
       state.cart.push(action.payload);
-
       return {
         ...state,
       };
@@ -36,6 +36,11 @@ const cartRudecer = (state = initialState, action) => {
             quantity: item.quantity !== 1 ? item.quantity - 1 : 1,
           }
           : item)),
+      };
+    case actionTypes.CHECKOUT_SUCCESS:
+      return {
+        ...state,
+        checkout_status: true,
       };
     default:
       return state;

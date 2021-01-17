@@ -6,3 +6,6 @@ export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
 export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 export const ADD_CART = 'ADD_CART';
 export const EMPTY_CART = 'EMPTY_CART';
+
+export const CHECKOUT = 'CHECKOUT';
+export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
