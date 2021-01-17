@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -72,11 +73,11 @@ const CartTable = ({
           </CartCheckoutButton>
         </>
       ) : (
-        <div>
+        <Typography variant="body1">
           Please add products, go to
           {' '}
           <Link to="/">product page</Link>
-        </div>
+        </Typography>
       )}
 
     </CartTableWrapper>

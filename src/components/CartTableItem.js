@@ -17,15 +17,15 @@ const CartTableItemDelete = styled.div`
   width: 10%;
 `;
 
-const CartTableItemName = styled.div`
+const CartTableItemName = styled.h2`
   width: 25%;
 `;
 
-const CartTableItemPrice = styled.div`
+const CartTableItemPrice = styled.span`
   width: 25%;
 `;
 
-const CartTableItemQuantity = styled.div`
+const CartTableItemQuantity = styled.span`
   width: 25%;
 `;
 

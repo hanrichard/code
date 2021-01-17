@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -33,8 +34,10 @@ const Cart = ({ cart }) => {
     <CartWrapper>
       <ShoppingCartIcon />
       <CartInfo>
-        <div>Your cart</div>
-        {amout}
+        <Typography variant="body1" component="p">Your cart</Typography>
+        <Typography variant="body1" component="span">
+          {amout}
+        </Typography>
       </CartInfo>
       <CartLink to="/cart">
         View cart

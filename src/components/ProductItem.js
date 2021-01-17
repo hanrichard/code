@@ -36,15 +36,15 @@ const ProductItemGroup = styled.div`
   padding: 10px;
 `;
 
-const ProductItemName = styled.div`
+const ProductItemName = styled.h2`
   margin-bottom: 10px;
 `;
 
-const ProductItemPrice = styled.div`
+const ProductItemPrice = styled.span`
   margin-bottom: 10px;
 `;
 
-const ProductItemDescription = styled.div`
+const ProductItemDescription = styled.p`
   margin-bottom: 10px;
 `;
 

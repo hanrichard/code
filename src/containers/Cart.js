@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
 
@@ -12,6 +13,7 @@ const Cart = ({
 }) => (
   <>
     {apiStatus.error && <AlterMessage severity="error" title="Error" content="There is something wrong with your token." />}
+    <Typography variant="h3" component="h1" gutterBottom>Checkout</Typography>
     <CartTable
       cart={cart}
       onCheckoutReset={() => onCheckoutReset()}
