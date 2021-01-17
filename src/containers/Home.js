@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import * as actions from '../store/actions/index';
 import ProductList from '../components/ProductList';
 import AlterMessage from '../components/AlterMessage';
+import Loader from '../components/Loader';
 
 const Home = ({ products, onInitProducts, apiStatus }) => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const Home = ({ products, onInitProducts, apiStatus }) => {
   return (
     <>
       {apiStatus.error && <AlterMessage severity="error" title="Error" content="There is something wrong with your token!" />}
-      <ProductList products={products} />
+      {products.products === 0 ? <Loader /> : <ProductList products={products} />}
     </>
   );
 };
