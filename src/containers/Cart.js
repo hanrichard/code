@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
 
-import Checkout from '../components/Checkout';
+import CheckoutMessage from '../components/CheckoutMessage';
 import CartTable from '../components/CartTable';
 
 const CartWrapper = styled.div`
@@ -13,7 +13,7 @@ const CartWrapper = styled.div`
 const Cart = ({ cart, onDeleteCart }) => (
   <CartWrapper>
     <CartTable cart={cart} onDeleteCart={(product) => onDeleteCart(product)} />
-    <Checkout cart={cart} />
+    <CheckoutMessage cart={cart} />
   </CartWrapper>
 );
 Cart.propTypes = {
