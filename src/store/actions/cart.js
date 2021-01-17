@@ -34,6 +34,10 @@ export const checkoutSuccess = (payload) => ({
   payload,
 });
 
+export const apiError = () => ({
+  type: actionTypes.TOKEN_ERROR,
+});
+
 export const checkout = (data) => (dispatch) => {
   const formatedData = JSON.stringify(data);
   axiosApi.post(`/api/v1/resources/checkout?token=${token}`, formatedData, header)
@@ -41,8 +45,11 @@ export const checkout = (data) => (dispatch) => {
       dispatch(checkoutSuccess(response.data));
     })
     .catch((error) => {
-      if (error.response) {
+      if (error?.response?.data?.code === 400) {
         dispatch(checkoutFail());
+      }
+      if (error?.response?.data?.code === 403) {
+        dispatch(apiError());
       }
     });
 };
