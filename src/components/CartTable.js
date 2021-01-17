@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import CartTableItem from './CartTableItem';
 
 const CartTableWrapper = styled.div`
   width: 100%;
   padding: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
 `;
 
 const CartTotal = styled.div`
@@ -14,18 +17,45 @@ const CartTotal = styled.div`
   text-align: right;
 `;
 
+const CartInfo = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #126c34;
+`;
+
+const CartInfoItem = styled.div`
+  width :25%;
+`;
+
 const CartTable = ({ cart }) => {
   const displayCart = cart.cart.length > 0 && cart.cart.map((product) => <CartTableItem key={product.productId} product={product} />);
   const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
 
   return (
     <CartTableWrapper>
-      <div>
-        {displayCart}
-      </div>
-      <CartTotal>
-        {`Total: $${calcValue}`}
-      </CartTotal>
+
+      {cart.cart.length > 0 ? (
+        <>
+          <CartInfo>
+            <CartInfoItem>Name</CartInfoItem>
+            <CartInfoItem>Price</CartInfoItem>
+            <CartInfoItem>Quantity</CartInfoItem>
+            <CartInfoItem>Update</CartInfoItem>
+          </CartInfo>
+          {displayCart}
+          <CartTotal>
+            {`Total: $${calcValue.toFixed(2)}`}
+          </CartTotal>
+        </>
+      ) : (
+        <div>
+          Please add products, go to
+          {' '}
+          <Link to="/">product page</Link>
+        </div>
+      )}
+
     </CartTableWrapper>
   );
 };

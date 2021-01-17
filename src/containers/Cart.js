@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Checkout from '../components/Checkout';
 import CartTable from '../components/CartTable';
 
 const CartWrapper = styled.div`
-  background-color: #fff;
 `;
 
 const Cart = ({ cart }) => (
   <CartWrapper className="App">
     <CartTable cart={cart} />
+    <Checkout cart={cart} />
   </CartWrapper>
 );
 

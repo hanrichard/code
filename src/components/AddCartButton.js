@@ -11,6 +11,9 @@ const AddCartButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  border: 1px solid #c3c7c9;
+  border-radius: 5px;
+  height: 36px;
 `;
 
 const AddCartQuantity = styled.div`
@@ -46,10 +49,7 @@ const CustomAddButton = styled(Button)`
 const AddCartButton = ({
   product, onAddToCart, cart, onDecreaseQuantity, onIncreaseQuantity, onDeleteCart,
 }) => {
-  console.log(cart);
   const defaultNumber = cart.cart.find(((item) => item.productId === product.productId))?.quantity || 0;
-
-  console.log(defaultNumber);
   const stockOnHandNum = product.stockOnHand;
   const [number, setNumber] = useState(defaultNumber);
   const [buttonMinusDisabled, setButtonMinusDisabled] = useState(false);
