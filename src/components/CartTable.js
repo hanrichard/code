@@ -44,17 +44,15 @@ const CartCheckoutButton = styled.div`
 `;
 
 const CartTable = ({ cart, onDeleteCart, onCheckout }) => {
-  const displayCart = cart.cart.length > 0 && cart.cart.map((product) => <CartTableItem key={product.productId} product={product} onDeleteCart={onDeleteCart} />);
-  const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
+  const displayCart = cart.products.length > 0 && cart.products.map((product) => <CartTableItem key={product.productId} product={product} onDeleteCart={onDeleteCart} />);
+  const calcValue = cart.products.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
 
   const handleClick = () => {
-    console.log('xxxx', cart.cart);
-    onCheckout(cart.cart);
-    console.log('checkout', cart);
+    onCheckout(cart.products);
   };
   return (
     <CartTableWrapper>
-      {cart.cart.length > 0 ? (
+      {cart.products.length > 0 ? (
         <>
           <CartInfo>
             <CartTableItemDelete />

@@ -3,7 +3,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  cart: [],
+  products: [],
   checkout_status: false,
 };
 
@@ -11,26 +11,26 @@ const cartRudecer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_CART:
       action.payload.quantity = 1;
-      state.cart.push(action.payload);
+      state.products.push(action.payload);
       return {
         ...state,
       };
     case actionTypes.EMPTY_CART:
       return {
         ...state,
-        cart: state.cart.filter((item) => item.productId !== action.payload.productId),
+        products: state.products.filter((item) => item.productId !== action.payload.productId),
       };
     case actionTypes.INCREASE_QUANTITY:
       return {
         ...state,
-        cart: state.cart.map((item) => (item.productId === action.payload.productId
+        products: state.products.map((item) => (item.productId === action.payload.productId
           ? { ...item, quantity: item.quantity + 1 }
           : item)),
       };
     case actionTypes.DECREASE_QUANTITY:
       return {
         ...state,
-        cart: state.cart.map((item) => (item.productId === action.payload.productId
+        products: state.products.map((item) => (item.productId === action.payload.productId
           ? {
             ...item,
             quantity: item.quantity !== 1 ? item.quantity - 1 : 1,
@@ -38,7 +38,6 @@ const cartRudecer = (state = initialState, action) => {
           : item)),
       };
     case actionTypes.CHECKOUT_SUCCESS:
-      console.log('payload', action.payload);
       return {
         ...state,
         checkout_status: true,

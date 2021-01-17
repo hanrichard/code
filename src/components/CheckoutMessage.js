@@ -10,7 +10,7 @@ const CheckoutWrapper = styled.div`
 
 const CheckoutMessage = ({ cart }) => {
   console.log('cart', cart);
-  return cart.cart.length > 0 && (
+  return cart.products.length > 0 && (
     <CheckoutWrapper>
       <Alert severity="error">
         <AlertTitle>Error</AlertTitle>

@@ -49,7 +49,7 @@ const CustomAddButton = styled(Button)`
 const AddCartButton = ({
   product, onAddToCart, cart, onDecreaseQuantity, onIncreaseQuantity, onDeleteCart,
 }) => {
-  const defaultNumber = cart.cart.find(((item) => item.productId === product.productId))?.quantity || 0;
+  const defaultNumber = cart.products.find(((item) => item.productId === product.productId))?.quantity || 0;
   const stockOnHandNum = product.stockOnHand;
   const [number, setNumber] = useState(defaultNumber);
   const [buttonMinusDisabled, setButtonMinusDisabled] = useState(false);

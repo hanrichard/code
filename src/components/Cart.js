@@ -26,8 +26,8 @@ const CartLink = styled(Link)`
 `;
 
 const Cart = ({ cart }) => {
-  const calcValue = cart.cart.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
-  const amout = cart.cart.length > 0 ? priceFormat(calcValue) : 0;
+  const calcValue = cart.products.reduce((total, currentItem) => total + (currentItem.audPrice * currentItem.quantity), 0);
+  const amout = cart.products.length > 0 ? priceFormat(calcValue) : 0;
 
   return (
     <CartWrapper>
