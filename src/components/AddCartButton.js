@@ -12,9 +12,8 @@ const AddCartButtonWrapper = styled.div`
   align-items: center;
   width: 100%;
   border: 1px solid #c3c7c9;
-  border-radius: 25px;
   height: 36px;
-  overflow: hidden;
+  border-radius: 25px;
 `;
 
 const AddCartQuantity = styled.div`
@@ -25,6 +24,16 @@ const CustomButton = styled(Button)`
   && {
     background-color: #125430;
     color: #fff;
+
+    &.is-left {
+     border-top-left-radius: 25px;
+     border-bottom-left-radius: 25px;
+    }
+    
+    &.is-right {
+     border-top-right-radius: 25px;
+     border-bottom-right-radius: 25px;
+    }
 
     span {
       margin: 0;
@@ -37,6 +46,7 @@ const CustomAddButton = styled(Button)`
     background-color: #125430;
     color: #fff;
     width: 100%;
+    border-radius: 25px;
 
     &:disabled,
     &[disabled]{
@@ -104,6 +114,7 @@ const AddCartButton = ({
             disabled={buttonMinusDisabled}
             onClick={() => handleMinusClick(product)}
             variant="contained"
+            className="is-left"
             startIcon={<RemoveIcon />} />
           <AddCartQuantity>
             {number}
@@ -112,6 +123,7 @@ const AddCartButton = ({
             disabled={buttonPlusDisabled}
             onClick={() => handlePlusClick(product)}
             variant="contained"
+            className="is-right"
             startIcon={<AddIcon />} />
         </>
       )
