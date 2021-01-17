@@ -8,7 +8,7 @@ WooliesX customer can:
 - click on the checkout button, they should get a message confirming or declining their order;
 
 ## What's in the project
-Client provides the front-end to view datas
+MY-APP provides the front-end view to interactive with data
 
 ## Tech stacks
 React, Redux, scss, style-component, es6, material-ui, etc
@@ -35,3 +35,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `yarn test`
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+## todo list
+- add more unit tests
+- add more business logics
+- make the app to be fully responsive
+
