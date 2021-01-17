@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Alert, AlertTitle } from '@material-ui/lab';
 import * as actions from '../store/actions/index';
 
 import CheckoutMessage from '../components/CheckoutMessage';
 import CartTable from '../components/CartTable';
+import ApiErrorMessage from '../components/ApiErrorMessage';
 
 const Cart = ({
   cart, onDeleteCart, onCheckout, onCheckoutReset, apiStatus,
 }) => (
   <>
-    {apiStatus.error && (
-    <Alert severity="error">
-      <AlertTitle>Error</AlertTitle>
-      There is something wrong with your API token!
-    </Alert>
-    )}
+    {apiStatus.error && <ApiErrorMessage title="Error" content="There is something wrong with your token" />}
     <CartTable
       cart={cart}
       onCheckoutReset={() => onCheckoutReset()}

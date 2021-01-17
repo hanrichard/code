@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Alert, AlertTitle } from '@material-ui/lab';
 import * as actions from '../store/actions/index';
 import ProductList from '../components/ProductList';
+import ApiErrorMessage from '../components/ApiErrorMessage';
 
 const Home = ({ products, onInitProducts, apiStatus }) => {
   useEffect(() => {
@@ -12,12 +12,7 @@ const Home = ({ products, onInitProducts, apiStatus }) => {
 
   return (
     <>
-      {apiStatus.error && (
-        <Alert severity="error">
-          <AlertTitle>Error</AlertTitle>
-          There is something wrong with your API token!
-        </Alert>
-      )}
+      {apiStatus.error && <ApiErrorMessage title="Error" content="There is something wrong with your token" />}
       <ProductList products={products} />
     </>
   );
