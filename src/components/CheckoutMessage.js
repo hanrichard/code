@@ -9,21 +9,22 @@ const CheckoutWrapper = styled.div`
 `;
 
 const CheckoutMessage = ({ cart }) => {
-  console.log('cart', cart);
+  const showCheckoutSuccess = cart.checkout_success;
+  const showCheckoutError = cart.checkout_error;
   return cart.products.length > 0 && (
     <CheckoutWrapper>
+      {showCheckoutError && (
       <Alert severity="error">
         <AlertTitle>Error</AlertTitle>
-        This is an error alert —
-        {' '}
-        <strong>check it out!</strong>
+        This is an error alert, your order has been declined!
       </Alert>
+      )}
+      {showCheckoutSuccess && (
       <Alert severity="success">
         <AlertTitle>Success</AlertTitle>
-        This is a success alert —
-        {' '}
-        <strong>check it out!</strong>
+        This is a success alert, your order has been confirmed!
       </Alert>
+      )}
     </CheckoutWrapper>
   );
 };

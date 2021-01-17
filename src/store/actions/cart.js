@@ -35,7 +35,7 @@ export const checkoutSuccess = (payload) => ({
 });
 
 export const checkout = (data) => (dispatch) => {
-  const formatedData = JSON.stringify(data + 12);
+  const formatedData = JSON.stringify(data);
   axiosApi.post(`/api/v1/resources/checkout?token=${token}`, formatedData, header)
     .then((response) => {
       dispatch(checkoutSuccess(response.data));

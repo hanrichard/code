@@ -42,10 +42,12 @@ const cartRudecer = (state = initialState, action) => {
       return {
         ...state,
         checkout_success: true,
+        checkout_error: false,
       };
     case actionTypes.CHECKOUT_FAIL:
       return {
         ...state,
+        checkout_success: false,
         checkout_error: true,
       };
     case actionTypes.CHECKOUT_RESET:
