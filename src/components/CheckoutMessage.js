@@ -13,8 +13,8 @@ const CheckoutMessage = ({ cart }) => {
   const showCheckoutError = cart.checkout_error;
   return cart.products.length > 0 && (
     <CheckoutWrapper>
-      {showCheckoutError && <AlterMessage severity="error" title="Error" content="This is an error alert, your order has been declined!" /> }
-      {showCheckoutSuccess && <AlterMessage severity="success" title="success" content="This is a success alert, your order has been confirmed!" /> }
+      {showCheckoutError && <AlterMessage severity="error" title="Error" content="Your order has been declined!" /> }
+      {showCheckoutSuccess && <AlterMessage severity="success" title="success" content="Your order has been confirmed!" /> }
     </CheckoutWrapper>
   );
 };

@@ -12,7 +12,7 @@ const Home = ({ products, onInitProducts, apiStatus }) => {
 
   return (
     <>
-      {apiStatus.error && <AlterMessage title="Error" content="There is something wrong with your token" />}
+      {apiStatus.error && <AlterMessage severity="error" title="Error" content="There is something wrong with your token!" />}
       <ProductList products={products} />
     </>
   );

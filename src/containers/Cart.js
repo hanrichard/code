@@ -11,7 +11,7 @@ const Cart = ({
   cart, onDeleteCart, onCheckout, onCheckoutReset, apiStatus,
 }) => (
   <>
-    {apiStatus.error && <AlterMessage title="Error" content="There is something wrong with your token" />}
+    {apiStatus.error && <AlterMessage severity="error" title="Error" content="There is something wrong with your token." />}
     <CartTable
       cart={cart}
       onCheckoutReset={() => onCheckoutReset()}
