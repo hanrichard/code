@@ -36,9 +36,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## This is only MVP version, therefore, on the todo list:
-- add more unit tests
-- add more business logics
+## This is only MVP version, therefore, there are still some itme on the todo list:
+- add unit tests
+- add business logics
 - make the app to be fully responsive
 - some styles need to be improved
+- add cart view on product page
+- add single product view page
+- add sorting/searching function
+- etc...
 
