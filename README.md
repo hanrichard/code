@@ -7,6 +7,9 @@ WooliesX customer can:
 - go to a checkout page that shows a summary of items they have added to the cart, the total price and a checkout button;
 - click on the checkout button, they should get a message confirming or declining their order;
 
+## Online view
+Codesandbox: [https://codesandbox.io/s/heuristic-carson-4z7g0](https://codesandbox.io/s/heuristic-carson-4z7g0)
+
 ## What's in the project
 MY-APP provides the front-end view to interactive with data, and also this is fully accessiblity supported.
 
